@@ -32,6 +32,7 @@ livro(isbn*,cnpj*,email*,titulo)
 editora(cnpj*,nome)
 exemplar(numero*,email*,isbn*,cnpj*,data_aquisicao)
 
-h)paciente(cpf*,telefone,nome)
+h)paciente(cpf*,nome)
+telefones(telefone*,cpf*)
 consulta(cpf*,crm*,data)
 medico(crm*,nome,especialidade)
