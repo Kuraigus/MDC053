@@ -1,0 +1,37 @@
+a)Departamento(codigo*, nome)
+Funcionario(matricula*,codigo,nome,salario)
+gerencia(matricula_gerente*, nome, salario, matricula, codigo)
+
+b)Endereco(id*,logradouro, numero, cep, uf, cidade)
+pessoa(id*, nome)
+fisica(id*,sexo,cpf)
+juridica(id*,inscricao,cnpj)
+
+c)banco(cod_banco*,nome)
+agencia(cod_agencia*,cod_banco,nome)
+empresta(cod_agencia*,cpf*,cod_banco*,valor_parcela,qtde_parcelas,taxa_juros)
+cliente(cpf*,nome,data_nasc)
+
+d)fornecedor(id_fornecedor*, nome)
+fornece(id_fornecedor*,id_produto*,id_cosumidor*,data,qtde)
+produto(id_produto*,nome)
+consumidor(id_cosumidor*,nome)
+
+e)aluno(matricula*,numero*,nome)
+turma(numero*,matricula*,sala)
+professor(matricula*,nome,titulo)
+
+f)cliente(cpf*,nome)
+financiamento(numero*,cpf*,data,valor,prazo)
+veiculo(renavam*,valor,ano)
+carga(renavam*,num_eixos,carga_max)
+passeio(renavam*,num_portas,tamanho)
+
+g)autor(email*,nome)
+livro(isbn*,cnpj*,email*,titulo)
+editora(cnpj*,nome)
+exemplar(numero*,email*,isbn*,cnpj*,data_aquisicao)
+
+h)paciente(cpf*,telefone,nome)
+consulta(cpf*,crm*,data)
+medico(crm*,nome,especialidade)
