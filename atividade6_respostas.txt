@@ -1,29 +1,40 @@
-a)use projetos;
+a)create database projetos;
+use projetos;
 
 create table gerente(
-    -> numero_gerente int not null primary key,
-    -> nome_gerente varchar(100) not null);
+    -> numero_gerente int not null,
+    -> nome_gerente varchar(100) not null,
+    ->	primary key(numero_gerente)
+    ->	);
      
 create table departamento(
-    -> numero_depto int not null primary key,
-    -> nome_depto varchar(100) not null);
+    -> numero_depto int not null,
+    -> nome_depto varchar(100) not null
+    -> primary key(numero_depto)
+    ->	);
    
 create table empregado(
-    -> numero_empregado int not null primary key,
+    -> numero_empregado int not null,
     -> nome_empregado varchar(100) not null,
-    -> numero_depto int references departamento(numero_depto));
+    -> numero_depto int references departamento(numero_depto)
+    ->	primary key(numero_empregado)
+    ->	);
 
 create table projeto(
     -> numero_projeto INT NOT NULL,
     -> nome_projeto VARCHAR(100) NOT NULL,
     -> data_inicio_projeto DATE,
-    -> numero_gerente INT NOT NULL REFERENCES gerente(numero_gerente));
+    -> numero_gerente INT NOT NULL REFERENCES gerente(numero_gerente);
     -> primary key(numero_projeto);
+    -> foreign key(numero_gerente)
+    ->	);
 
 create table projeto_empregado(
     -> numero_projeto int not null references projeto(numero_projeto),
     -> numero_empregado int not null references empregado(numero_empregado),
     -> horas_trabalhadas_projeto smallint default 0,
     -> primary key(numero_projeto, numero_empregado));
+    ->	foreign key(numero_projeto, numero_empregado)
+    ->	);
  
  b)
