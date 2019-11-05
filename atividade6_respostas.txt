@@ -37,4 +37,111 @@ create table projeto_empregado(
     ->	foreign key(numero_projeto, numero_empregado)
     ->	);
  
- b)
+ b) create database fornecedor
+ use fornecedor
+ 
+ create table fornecedor(
+	->cod_fornecedor INT NOT NULL AUTOINCREMENT,
+	->nom_fornecedor VARCHAR(100) NOT NULL,
+	->end_fornecedor VARCHAR(100),
+	->Primary Key(cod_fornecedor));
+
+create table material(
+	->cod_material INT NOT NULL AUTOINCREMENT,
+	->dsc_material varchar(100) NOT NULL,
+	->vlr_unitario INT NOT NULL,
+	->Primary Key(cod_material));
+
+create table pedido(
+	->cod_pedido INT NOT NULL AUTOINCREMENT,
+	->dat_emissao DATE NOT NULL,
+	->cod_fornecedor INT NOT NULL REFERENCES fornecedos(cod_fornecedor),
+	->vlr_total_pedido DECIMAL(12,2) DEFAULT 0
+	->Primary Key(cod_pedido));	
+
+create table pedido_material(
+	->cod_pedido INT NOT NULL REFERENCES pedido(cod_pedido),
+	->cod_material INT NOT NULL REFERENCES material(cod_material),
+	->qtde_material SMALLINT NOT NULL CHECK > 0,
+	->vlr_material DECIMAL(12,2) NOT NULL
+	->Primary Key(cod_pedido, cod_material));
+
+c)create database turma
+use turma
+
+create table curso(
+	->id_curso INT NOT NULL AUTOINCREMENT,
+	->nome_curso VARCHAR(100) NOT NULL,
+	->carga_horaria SMALLINT,
+	->Primary Key(id_curso));
+
+create table aluno(
+	->id_aluno INT NOT NULL AUTOINCREMENT,
+	->nome_aluno VARCHAR(100) NOT NULL,
+	->email_aluno VARCHAR(100),
+	->fone_contato CHAR(14),
+	->Primary Key(id_aluno));
+
+create table turma(
+	->id_turma INT NOT NULL AUTOINCREMENT,
+	->id_curso INT NOT NULL REFERENCES curso(id_curso),
+	->id_aluno INT NOT NULL REFERENCES aluno(id_aluno),
+	->data_matricula DATE NOT NULL,
+	->Primary Key(id_turma));
+
+d)create database consulta
+use consulta
+
+create table especialidade(
+	->cod_especialidade INT NOT NULL,
+	->dsc_especialidade VARCHAR(100) NOT NULL,
+	->Primary Key(cod_especialidade));
+
+create table paciente(
+	->id_paciente INT NOT NULL AUTOINCREMENT,
+	->nome_paciente VARCHAR(100) NOT NULL,
+	->Primary Key(id_paciente));
+
+create table medico(
+	->cod_medico INT NOT NULL AUTOINCREMENT,
+	->nome_medico VARCHAR(100) NOT NULL,
+	->cod_especialidade INT NOT NULL REFERENCES especialidade(cod_especialidade)
+	->Primary Key(cod_medico));
+
+create table consulta(
+	->id_consulta INT NOT NULL AUTOINCREMENT,
+	->Id_medico INT NOT NULL REFERENCES medico(cod_medico),
+	->id_paciente INT NOT NULL REFERENCES paciente(id_paciente),
+	->data_consulta DATE NOT NULL,
+	->Primary Key(id_consulta));
+
+e)create database emprestimo_livro
+use emprestimo_livro
+
+create table editora(
+	->cod_editora INT NOT NULL AUTOINCREMENT,
+	->nom_editora VARCHAR(100) NOT NULL,
+	->Primary Key(cod_editora));
+
+create table aluno(
+	->id_aluno INT NOT NULL AUTOINCREMENT,
+	->num_matricula INT NOT NULL UNIQUE,
+	->nom_aluno VARCHAR(100) NOT NULL,
+	->PRIMARY KEY(id_aluno));
+
+create table livro(
+	->id_livro INT NOT NULL AUTOINCREMENT,
+	->num_isbn CHAR(13) NOT NULL UNIQUE,
+	->tit_livro VARCHAR(100) NOT NULL,
+	->num_paginas SMALLINT CHECK > 0,
+	->cod_editora INT NOT NULL REFERENCES(cod_editora),
+	->Primary Key(cod_editora));
+
+create table emprestimo(
+	->id_emprestimo INT NOT NULL AUTOINCREMENT,
+	->id_livro INT NOT NULL REFERENCES livro(id_livro),
+	->id_aluno INT NOT NULL REFERENCES aluno(id_aluno),
+	->dat_emprestimo DATE NOT NULL,
+	->dat_devolucao DATE,
+	->Primary Key(id_emprestimo));
+
