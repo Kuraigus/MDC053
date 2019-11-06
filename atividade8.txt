@@ -1,0 +1,5 @@
+a) select nom_professor from professor;
+
+b)select nom_aluno from aluno where nom_aluno like '%a';
+
+c)
