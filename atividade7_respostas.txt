@@ -41,4 +41,49 @@ CREATE TABLE historico(
   FOREIGN KEY(id_aluno) REFERENCES aluno(id_aluno)
 );
 
-b)
+b)O comando rodou porem deu warning, pois a entrada tem entrada NOT NULL que na entrada estava NULL
+
+c)INSERT INTO aluno(id_aluno,nome_aluno) VALUES (1,'JOSE');
+INSERT INTO aluno(id_aluno,nome_aluno) VALUES (2,'MARIA');
+INSERT INTO aluno(id_aluno,nome_aluno) VALUES (3,'BRUNO');
+INSERT INTO aluno(id_aluno,nome_aluno) VALUES (4,'CLARA');
+INSERT INTO aluno(id_aluno,nome_aluno) VALUES (5,'PEDRO');
+
+d)INSERT INTO disciplina(id_disciplina,nome_disciplina,carga_horaria)VALUES (1,'BANCO DE DADOS I', -1);
+inseriu nomal
+
+e)UPDATE disciplina SET carga_horaria = 60WHERE id_disciplina = 1;
+INSERT INTO disciplina(id_disciplina,nome_disciplina,carga_horaria)VALUES (2,'BANCO DE DADOS II', 60);
+
+f)INSERT INTO professor(id_professor,nome_professor) VALUES (1,'LETICIA');
+INSERT INTO professor(id_professor,nome_professor) VALUES (2,'JOSE REGINALDO');
+
+g)INSERT INTO turma(id_turma,num_periodo) VALUES (1,20192);
+
+h)UPDATE turma SET num_periodo = 20201 WHERE id_turma = 1;
+
+i)INSERT INTO turma(id_turma,num_periodo,id_professor,id_disciplina) VALUES (2,20201,3,null);
+
+j)INSERT INTO turma(id_turma,num_periodo,id_professor, id_disciplina) VALUES (3,20201,1,1);
+INSERT INTO turma(id_turma,num_periodo,id_professor, id_disciplina) VALUES (4,20202,2,2);
+
+k)INSERT INTO historico(id_historico,id_turma,id_aluno) VALUES (1,1,1);
+INSERT INTO historico(id_historico,id_turma,id_aluno) VALUES (2,1,2);
+INSERT INTO historico(id_historico,id_turma,id_aluno) VALUES (3,1,3);
+INSERT INTO historico(id_historico,id_turma,id_aluno) VALUES (4,1,4);
+INSERT INTO historico(id_historico,id_turma,id_aluno) VALUES (5,3,1);
+INSERT INTO historico(id_historico,id_turma,id_aluno) VALUES (6,3,2);
+INSERT INTO historico(id_historico,id_turma,id_aluno) VALUES (7,4,3);
+INSERT INTO historico(id_historico,id_turma,id_aluno) VALUES (8,4,4);
+
+l)UPDATE aluno SET nome_aluno = 'JOAO' WHERE nome_aluno = "JOSE%";
+
+m)UPDATE disciplina SET id_disciplina = 3 WHERE nome_disciplina = 'BANCO DE DADOS I';
+
+n)UPDATE historico SET media_final = 5 WHERE id_turma = 4;
+
+o)DELETE FROM aluno WHERE nome_aluno = '%PEDRO%';
+
+p)DELETE FROM disciplina WHERE nome_disciplina = 'BANCO DE DADOS II';
+
+q)DELETE FROM professor WHERE nome_professor = 'JOSE REGINALDO';
